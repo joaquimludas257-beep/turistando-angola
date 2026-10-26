@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubra as 18 províncias de Angola com o Turistando Angola: o seu guia autêntico para explorar praias, cultura, safaris e paisagens inexploradas de África.">
+    <title>Turistando Angola | Explore o Coração de África</title>
+    <!-- GOOGLE FONTS: Montserrat para títulos, Open Sans para corpo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* PALETA DE CORES: Dourado (#D4AF37), Verde Escuro (#1B4332), Terra (#8B4513) */
+        :root {
+            --gold: #D4AF37;
+            --green: #1B4332;
+            --earth: #8B4513;
+            --sand: #F5E6BE;
+            --dark: #121212;
+            --white: #ffffff;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --shadow: 0 15px 35px rgba(0,0,0,0.1);
+            --font-main: 'Open Sans', sans-serif;
+            --font-heading: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--sand);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .logo {
+            font-family: var(--font-heading);
+        }
+
+        /* ANIMAÇÕES DE REVELAÇÃO */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* NAVEGAÇÃO */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 15px 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            line-height: 1;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('img/fundos.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            max-width: 800px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--dark);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        /* CARROSSEL DE PROVÍNCIAS */
+        .carousel-section {
+            padding: 100px 5%;
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: 15px;
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--white);
+            font-size: 1.2rem;
+            font-family: inherit;
+        }
+
+        .control-btn:hover {
+            background-color: var(--gold);
+            border-color: var(--gold);
+            color: var(--dark);
+        }
+
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 25px;
+            transition: transform 0.5s ease;
+            padding-bottom: 20px;
+        }
+
+        .province-card {
+            min-width: 320px;
+            height: 480px;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .province-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .province-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .province-card:hover img {
+            transform: scale(1.15);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 2;
+        }
+
+        .province-card h3 {
+            font-size: 1.9rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .province-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-style: italic;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 55px;
+            height: 55px;
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 999;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: inherit;
+        }
+
+        .scroll-top.visible {
+            display: flex;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-8px);
+            background: var(--white);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        /* SECÇÕES DAS PROVÍNCIAS */
+        .province-detail {
+            padding: 100px 5%;
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .province-banner {
+            width: 100%;
+            height: 400px;
+            border-radius: 30px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .province-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .province-info {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .province-info h2 {
+            font-size: 3.5rem;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+
+        .province-desc {
+            font-size: 1.2rem;
+            color: var(--earth);
+            margin-bottom: 50px;
+            max-width: 800px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .info-box {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-left: 4px solid var(--gold);
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .info-box h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-box ul {
+            list-style: none;
+        }
+
+        .info-box li {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            opacity: 0.8;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .info-box li::before {
+            content: "•";
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+
+        /* DESTAQUES */
+        .featured-section {
+            padding: 100px 5%;
+            background-color: var(--sand);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .featured-card {
+            height: 550px;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        .featured-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .featured-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .featured-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 50px 40px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+            color: var(--white);
+            z-index: 2;
+        }
+
+        .featured-content h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .featured-content p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        /* SOBRE */
+        .about-section {
+            padding: 120px 5%;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 350px;
+            height: 500px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 30px 30px 0 var(--sand);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content {
+            flex: 1.2;
+            min-width: 350px;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            color: var(--green);
+            margin-bottom: 30px;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            opacity: 0.8;
+            margin-bottom: 25px;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            padding: 100px 5%;
+            background-color: var(--green);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        .contact-form textarea {
+            grid-column: span 2;
+            height: 150px;
+            resize: none;
+        }
+
+        .contact-form button {
+            grid-column: span 2;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* RODAPÉ */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 80px 5% 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col p, .footer-col a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .nav-links.active {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(18, 18, 18, 0.98);
+            padding: 40px;
+            gap: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            animation: slideDown 0.4s ease forwards;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--white);
+            width: 100%;
+            max-width: 900px;
+            max-height: 90vh;
+            border-radius: 30px;
+            overflow-y: auto;
+            position: relative;
+            padding: 50px;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: var(--transition);
+            line-height: 1;
+            padding: 5px;
+        }
+
+        .close-modal:hover {
+            color: var(--gold);
+        }
+
+        .modal-body h2 {
+            font-size: 2.5rem;
+            color: var(--green);
+            margin-bottom: 20px;
+        }
+
+        .modal-body p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .modal-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .about-section {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .province-info h2 { font-size: 2.5rem; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .contact-form { grid-template-columns: 1fr; }
+            .contact-form textarea, .contact-form button { grid-column: span 1; }
+        }
+
+        /* NOVO CARROSSEL DE EXPERIÊNCIAS (PREMIUM) */
+        .experience-slider-section {
+            padding: 100px 5%;
+            background-color: var(--white);
+        }
+
+        .exp-slider-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .exp-slider-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .exp-slide {
+            min-width: 100%;
+            height: 600px;
+            position: relative;
+        }
+
+        .exp-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .exp-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 60px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+        }
+
+        .exp-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+
+        .exp-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .exp-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            transform: translateY(-50%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .exp-control-btn {
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.3);
+            font-family: inherit;
+            pointer-events: auto;
+        }
+
+        .exp-control-btn:hover {
+            background: var(--gold);
+            color: var(--dark);
+            border-color: var(--gold);
+        }
+
+        .exp-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .exp-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0;
+        }
+
+        .exp-dot.active {
+            background: var(--gold);
+            width: 30px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .exp-slide { height: 400px; }
+            .exp-content { padding: 30px; }
+            .exp-content h3 { font-size: 1.8rem; }
+            .exp-control-btn { width: 45px; height: 45px; font-size: 1.2rem; }
+        }
+
+        /* UTILS */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .section-title-center {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title-center h2 {
+            font-size: 3rem;
+            color: var(--green);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGAÇÃO -->
+    <nav id="navbar">
+        <a href="#home" class="logo">TURISTANDO <span>ANGOLA</span></a>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#provincias">Províncias</a>
+            <a href="#destaques">Destaques</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <button type="button" class="menu-toggle" aria-label="Abrir menu de navegação">☰</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="reveal">
+            <h1>Explore Angola com <br> um novo olhar</h1>
+            <p>Descubra as 18 províncias, a cultura vibrante e as paisagens inexploradas do destino mais autêntico de África.</p>
+            <div class="hero-btns">
+                <a href="#provincias" class="btn btn-gold">Explorar Destinos</a>
+                <a href="#sobre" class="btn btn-outline">Ver Guia Completo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOVO CARROSSEL DE EXPERIÊNCIAS (PREMIUM) -->
+    <section class="experience-slider-section">
+        <div class="section-title-center reveal">
+            <h2>Experiências Inesquecíveis</h2>
+            <p>Momentos que ficarão gravados na sua memória para sempre.</p>
+        </div>
+        <div class="exp-slider-container reveal">
+            <div class="exp-slider-track" id="expSliderTrack">
+                <div class="exp-slide">
+                    <!-- CONFIRMAR: Substituir esta foto genérica por uma fotografia real do Parque Nacional do Iona -->
+                    <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=1200" alt="Paisagem de safari e vida selvagem no Parque Nacional do Iona" loading="lazy">
+                    <div class="exp-content">
+                        <h3>Safari no Iona</h3>
+                        <p>Onde o deserto encontra a vida selvagem.</p>
+                    </div>
+                </div>
+                <div class="exp-slide">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1200" alt="Pôr do sol dourado na praia e águas calmas da Ilha do Mussulo em Luanda" loading="lazy">
+                    <div class="exp-content">
+                        <h3>Pôr do Sol no Mussulo</h3>
+                        <p>Relaxamento total nas águas quentes do Atlântico.</p>
+                    </div>
+                </div>
+                <div class="exp-slide">
+                    <img src="https://images.unsplash.com/photo-1433086566608-e937396831ba?auto=format&fit=crop&q=80&w=1200" alt="Cascata imponente e força das águas naturais de Kalandula em Malanje" loading="lazy">
+                    <div class="exp-content">
+                        <h3>Majestade de Kalandula</h3>
+                        <p>A força da natureza em estado puro.</p>
+                    </div>
+                </div>
+                <div class="exp-slide">
+                    <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=1200" alt="Músicos e dançarinos tradicionais celebrando os ritmos de Luanda" loading="lazy">
+                    <div class="exp-content">
+                        <h3>Ritmos de Luanda</h3>
+                        <p>A energia contagiante do Semba e da Kizomba.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="exp-controls">
+                <button type="button" class="exp-control-btn" id="expPrev" aria-label="Experiência anterior">←</button>
+                <button type="button" class="exp-control-btn" id="expNext" aria-label="Próxima experiência">→</button>
+            </div>
+            <div class="exp-dots" id="expDots"></div>
+        </div>
+    </section>
+
+    <!-- CARROSSEL DE PROVÍNCIAS -->
+    <section class="carousel-section" id="provincias">
+        <div class="section-header reveal">
+            <div>
+                <h2>As 18 Províncias</h2>
+                <p>Uma jornada de diversidade e beleza sem limites.</p>
+            </div>
+            <div class="carousel-controls">
+                <button type="button" class="control-btn" id="prevBtn" aria-label="Província anterior">←</button>
+                <button type="button" class="control-btn" id="nextBtn" aria-label="Próxima província">→</button>
+            </div>
+        </div>
+        <div class="carousel-container reveal">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Cards serão gerados via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTAQUES -->
+    <section class="featured-section" id="destaques">
+        <div class="section-title-center reveal">
+            <h2>Destinos em Destaque</h2>
+            <p>As experiências que definem a alma de Angola.</p>
+        </div>
+        <div class="featured-grid">
+            <div class="featured-card reveal">
+                <img src="img/kalandula2.png" alt="Quedas de Kalandula em Malanje" loading="lazy">
+                <div class="featured-content">
+                    <h3>Quedas de Kalandula</h3>
+                    <p>Malanje | Sinta a força majestosa de uma das maiores quedas de água de África.</p>
+                    <a href="#section-malanje" class="btn btn-gold">Saber Mais</a>
+                </div>
+            </div>
+            <div class="featured-card reveal">
+                <!-- CONFIRMAR: O ficheiro img/tundavala.jpg não existe originalmente na pasta img/. Adicionar o ficheiro ou utilizar a imagem de reserva via onerror -->
+                <img src="img/tundavala.jpg" alt="Miradouro da Fenda da Tundavala na Huíla" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=1200'">
+                <div class="featured-content">
+                    <h3>Fenda da Tundavala</h3>
+                    <p>Huíla | Onde o planalto encontra o abismo numa vista de tirar o fôlego.</p>
+                    <a href="#section-huila" class="btn btn-gold">Saber Mais</a>
+                </div>
+            </div>
+            <div class="featured-card reveal">
+                <img src="img/mussulo2.jpg" alt="Praia tropical e bancos de areia da Ilha do Mussulo em Luanda" loading="lazy">
+                <div class="featured-content">
+                    <h3>Ilha do Mussulo</h3>
+                    <p>Luanda | Águas calmas e areias brancas no refúgio tropical da capital.</p>
+                    <a href="#section-luanda" class="btn btn-gold">Saber Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECÇÕES DAS PROVÍNCIAS (Geradas via JS) -->
+    <!-- Confirmar extensão real do ficheiro da província de Luanda na pasta img/ (luanda2.png ou luanda2.jpg) -->
+    <div id="provincesContainer"></div>
+
+    <!-- SOBRE -->
+    <section class="about-section" id="sobre">
+        <div class="about-image reveal">
+            <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=800" alt="Expressão cultural e tradições de Angola" loading="lazy">
+        </div>
+        <div class="about-content reveal">
+            <h2>Um projeto de paixão e autoridade</h2>
+            <p>O "Turistando Angola" não é apenas um guia. É um compromisso com a verdade e a beleza do nosso território. Exploramos cada canto das 18 províncias para trazer até si informações reais, seguras e inspiradoras.</p>
+            <p>Acreditamos que Angola tem o potencial para ser o destino premium de África, e a nossa missão é ser a ponte entre o viajante e as experiências inesquecíveis que só a nossa terra pode oferecer.</p>
+            <a href="#contacto" class="btn btn-gold">Planeie a sua viagem</a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contacto">
+        <div class="contact-container reveal">
+            <h2>Planeie a sua Viagem</h2>
+            <p>Deixe-nos ajudá-lo a criar uma experiência personalizada em Angola. A nossa equipa de especialistas está pronta para o guiar.</p>
+            <!-- Para receber mensagens diretamente no servidor, substituir por um endpoint Formspree e restaurar action/method POST -->
+            <form class="contact-form" id="contactForm">
+                <input type="text" id="contactName" name="nome" placeholder="Nome Completo" required>
+                <input type="email" id="contactEmail" name="email" placeholder="Seu Melhor Email" required>
+                <textarea id="contactMessage" name="mensagem" placeholder="Como podemos ajudá-lo? (Destinos de interesse, datas, etc.)" required></textarea>
+                <button type="button" class="btn btn-gold" id="sendBtn">Enviar Pedido de Informação</button>
+                <p class="form-status-note" style="margin-top: 15px; font-size: 0.85rem; opacity: 0.85; text-align: center;">Ao clicar, abre o seu programa de email com a mensagem pronta a enviar.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- SCROLL TO TOP -->
+    <button type="button" class="scroll-top" id="scrollTop" aria-label="Voltar ao topo da página">↑</button>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>TURISTANDO ANGOLA</h4>
+                <p>Explorando o potencial turístico de Angola com seriedade e paixão.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Links Rápidos</h4>
+                <a href="#home">Home</a>
+                <a href="#provincias">Províncias</a>
+                <a href="#destaques">Destaques</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <!-- CONFIRMAR: Verificar se o endereço info@turistandoangola.com está ativo e configurado para receção de mensagens -->
+                <p>Email: info@turistandoangola.com</p>
+                <p>Luanda, Angola</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Turistando Angola. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button type="button" class="close-modal" id="closeModal" aria-label="Fechar janela de detalhes">&times;</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Conteúdo dinâmico -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // DADOS DAS PROVÍNCIAS
+        const provinces = [
+            {
+                id: 'luanda',
+                name: 'Luanda',
+                slogan: 'Capital vibrante e centro económico',
+                desc: 'A porta de entrada para Angola, onde a modernidade encontra a tradição à beira-mar.',
+                details: 'Banhada pelas águas do Atlântico, Luanda combina o pulsar cosmopolita de uma capital moderna com uma herança histórica secular visível na Baía e na Fortaleza de São Miguel. É o epicentro da música e da gastronomia angolana, onde o tradicional mufete da Ilha do Cabo se cruza com a animação das noites de semba.',
+                // Confirmar extensão real do ficheiro na pasta img/ (luanda2.png ou luanda2.jpg)
+                img: 'img/luanda2.png',
+                points: ['Ilha do Cabo', 'Fortaleza de São Miguel', 'Museu da Moeda'],
+                stay: ['Epic Sana', 'Hotel Baía'],
+                food: ['Mufete', 'Calulu'],
+                cult: ['Semba', 'Carnaval']
+            },
+            {
+                id: 'benguela',
+                name: 'Benguela',
+                slogan: 'A cidade das Acácias Rubras',
+                desc: 'Famosa pelas suas praias de águas cristalinas e arquitetura histórica preservada.',
+                details: 'Conhecida pelas suas acácias rubras e pelo traçado arquitetónico colonial preservado, Benguela é um dos destinos balneares de referência no país. As águas límpidas da Baía Azul e da Caotinha convidam ao descanso e aos desportos náuticos, num ambiente acolhedor e descontraído.',
+                img: 'img/benguelapraia2.jpg',
+                points: ['Baía Azul', 'Praia da Caotinha', 'Largo da Peça'],
+                stay: ['Hotel Praia Morena'],
+                food: ['Peixe Grelhado', 'Mariscos'],
+                cult: ['Festas de Benguela']
+            },
+            {
+                id: 'huila',
+                name: 'Huíla',
+                slogan: 'Terras altas e paisagens majestosas',
+                desc: 'Onde a Serra da Leba serpenteia entre montanhas e a cultura Mumuila floresce.',
+                details: 'No planalto sul de Angola, a Huíla impressiona com o escarpado majestoso da Serra da Leba e a vertigem da Fenda da Tundavala. A província preserva também a rica identidade cultural do povo mumuila, com os seus trajes tradicionais e modos de vida pastoris ancestrais.',
+                img: 'img/huila2.jpg',
+                points: ['Serra da Leba', 'Fenda da Tundavala', 'Cascata da Huíla'],
+                stay: ['Hotel Serra da Chela'],
+                food: ['Carne de Sol'],
+                cult: ['Povo Mumuila']
+            },
+            {
+                id: 'namibe',
+                name: 'Namibe',
+                slogan: 'Onde o deserto beija o mar',
+                desc: 'Um cenário surreal de dunas douradas que terminam nas águas azuis do Atlântico.',
+                details: 'Onde o deserto costeiro encontra as águas do Atlântico, o Namibe oferece paisagens lunares e praias de beleza selvagem. É o habitat singular da milenar planta Welwitschia Mirabilis e guarda nas rochas de Tchitundo-Hulo gravuras rupestres de elevado valor arqueológico.',
+                img: 'img/namibe.png',
+                points: ['Deserto do Namibe', 'Lagoa do Arco', 'Tchitundo-Hulo', 'Reserva Botânica da Welwitschia'],
+                stay: ['Consulte unidades hoteleiras na cidade de Moçâmedes'],
+                food: ['Peixe Seco'],
+                cult: ['Povo Mucubal']
+            },
+            {
+                id: 'malanje',
+                name: 'Malanje',
+                slogan: 'Terra das Quedas de Kalandula',
+                desc: 'Cenários majestosos com algumas das maiores quedas de água de África.',
+                details: 'Malanje é terra de prodígios naturais, albergando as monumentais Quedas de Kalandula e as misteriosas Pedras Negras de Púngo Andongo. Na Reserva Natural Integral de Cangandala encontra-se o último refúgio da lendária Palanca Negra Gigante, símbolo nacional de Angola.',
+                img: 'img/malanje.png',
+                points: ['Quedas de Kalandula', 'Pedras Negras de Púngo Andongo', 'Reserva Natural Integral de Cangandala (Palanca Negra Gigante)'],
+                stay: ['Pousadas e hotéis na cidade de Malanje e Kalandula'],
+                food: ['Kizaca'],
+                cult: ['Tradições locais', 'Música e dança tradicional']
+            },
+            {
+                id: 'huambo',
+                name: 'Huambo',
+                slogan: 'A Cidade Planalto',
+                desc: 'Clima fresco e jardins exuberantes no coração central de Angola.',
+                details: 'Com o seu clima ameno e solos férteis, a cidade planáltica do Huambo foi historicamente um polo agrícola e académico essencial. A província é dominada por imponentes relevos orográficos e mantém vivas as memórias e tradições históricas do Reino do Bailundo.',
+                img: 'img/huambo.png',
+                points: ['Barragem do Ngove'],
+                stay: ['Unidades hoteleiras na cidade do Huambo'],
+                food: ['Frango à Huambo'],
+                cult: ['Reino do Bailundo']
+            },
+            {
+                id: 'bie',
+                name: 'Bié',
+                slogan: 'O Coração de Angola',
+                desc: 'Centro geográfico do país, rico em rios e história.',
+                details: 'Localizado no centro geográfico de Angola, o Bié é atravessado por rios abundantes como o Cuquema e o Kwanza. A província desempenha um papel histórico central no planalto angolano, oferecendo uma natureza verdejante e uma população acolhedora.',
+                img: 'img/bie.png',
+                points: ['Rio Cuquema'],
+                stay: ['Alojamentos locais na cidade do Cuito'],
+                food: ['Pratos de milho'],
+                cult: ['Dança tradicional']
+            },
+            {
+                id: 'uige',
+                name: 'Uíge',
+                slogan: 'A Terra do Café',
+                desc: 'Verdes colinas e cascatas escondidas no norte tropical.',
+                details: 'Famoso pelas suas extensas plantações cafeícolas, o Uíge caracteriza-se por colinas luxuriantes e cascatas de água pura. A região é rica em património imaterial ligado à cultura Bakongo, com grutas e recantos naturais por desbravar.',
+                img: 'img/uige.png',
+                points: ['Plantações cafeícolas e serras verdejantes'],
+                stay: ['Unidades hoteleiras na cidade do Uíge'],
+                food: ['Café do Uíge'],
+                cult: ['Cultura Bakongo']
+            },
+            {
+                id: 'zaire',
+                name: 'Zaire',
+                slogan: 'Berço do Reino do Congo',
+                desc: 'História milenar e a foz do majestoso Rio Congo.',
+                details: 'O Zaire guarda a histórica cidade de Mbanza Kongo, outrora capital do Reino do Congo e hoje classificada como Património Mundial da UNESCO. A norte, no Soyo, assiste-se ao espetáculo do encontro do colossal Rio Congo com as águas do Atlântico.',
+                img: 'img/zaire.png',
+                points: ['Mbanza Kongo', 'Foz do Rio Congo'],
+                stay: ['Alojamentos no Soyo e Mbanza Kongo'],
+                food: ['Saka-saka'],
+                cult: ['Reino do Congo']
+            },
+            {
+                id: 'cabinda',
+                name: 'Cabinda',
+                slogan: 'O Enclave de Ouro',
+                desc: 'Florestas densas e riqueza imensa no extremo norte.',
+                details: 'Separada do restante território angolano por uma faixa da República Democrática do Congo e pelo Rio Congo, Cabinda é um enclave de densas florestas tropicais, com destaque para a exuberante Floresta do Maiombe. Detentora de uma biodiversidade ímpar e de um rico artesanato em madeira, alia a sua riqueza natural à relevância económica nacional.',
+                img: 'img/cabinda.png',
+                points: ['Floresta do Maiombe', 'Pântano de Lândana'],
+                stay: ['Unidades hoteleiras em Cabinda'],
+                food: ['Chikwanga'],
+                cult: ['Escultura tradicional em madeira']
+            },
+            {
+                id: 'cuando-cubango',
+                name: 'Cuando Cubango',
+                slogan: 'Terras do Fim do Mundo',
+                desc: 'Natureza selvagem e o início do Delta do Okavango.',
+                details: 'Outrora apelidada de Terras do Fim do Mundo pela sua vastidão remota, o Cuando Cubango é hoje um santuário de conservação e ponto de entrada no ecossistema do Okavango. Alberga ainda o Memorial da Batalha do Cuito Cuanavale, marco decisivo na história contemporânea da África Austral.',
+                img: 'img/cuando-cubango.png',
+                points: ['Parque Nacional Luengue-Luiana', 'Memorial do Cuito Cuanavale'],
+                stay: ['Lodges e pensões em Menongue e bacia do Okavango'],
+                food: ['Peixe seco'],
+                cult: ['Tradições dos povos do leste e sul']
+            },
+            {
+                id: 'cunene',
+                name: 'Cunene',
+                slogan: 'Tradição e Resiliência',
+                desc: 'Cultura pastoril vibrante sob o sol do sul.',
+                details: 'Na fronteira sul de Angola, o Cunene destaca-se pela paisagem semiárida e pela forte cultura pastoril do povo Cuanhama. Em Oihole, o memorial ao Rei Mandume ya Ndemufayo homenageia a lendária resistência contra a ocupação colonial.',
+                img: 'img/cunene.png',
+                points: ['Memorial Rei Mandume'],
+                stay: ['Alojamentos na cidade de Ondjiva'],
+                food: ['Leite azedo'],
+                cult: ['Povo Cuanhama']
+            },
+            {
+                id: 'lunda-norte',
+                name: 'Lunda Norte',
+                slogan: 'Terra dos Diamantes',
+                desc: 'Riqueza mineral e cultura Lunda-Chokwe.',
+                details: 'Famosa pelas suas ricas reservas diamantíferas e rios caudalosos, a Lunda Norte é também um polo cultural de destaque. O conceituado Museu do Dundo guarda um dos mais valiosos acervos etnográficos da cultura Lunda-Chokwe, incluindo as famosas máscaras Mwana Pwo.',
+                img: 'img/lunda-norte.png',
+                points: ['Museu do Dundo'],
+                stay: ['Unidades hoteleiras na cidade do Dundo'],
+                food: ['Mandioca'],
+                cult: ['Máscaras Mwana Pwo']
+            },
+            {
+                id: 'lunda-sul',
+                name: 'Lunda Sul',
+                slogan: 'Coração do Leste',
+                desc: 'Paisagens fluviais e tradições ancestrais.',
+                details: 'Com a sua capital em Saurimo, a Lunda Sul é marcada pela bacia hidrográfica do Chicapa e pelas suas quedas de água cénicas. As manifestações artísticas do povo Chokwe, em particular a expressiva dança Tchianda, refletem uma herança espiritual e comunitária viva.',
+                img: 'img/lunda-sul.png',
+                points: ['Quedas do Chicapa'],
+                stay: ['Unidades hoteleiras na cidade de Saurimo'],
+                food: ['Peixe de rio'],
+                cult: ['Dança Tchianda']
+            },
+            {
+                id: 'moxico',
+                name: 'Moxico',
+                slogan: 'A Maior Província',
+                desc: 'Vastidão, rios e o nascer do sol angolano.',
+                details: 'A maior província de Angola em extensão territorial é um território de horizontes infindáveis, rios navegáveis e florestas de miombo. O Parque Nacional da Cameia alberga vastas planícies inundadas e uma fauna diversificada que convida ao ecoturismo.',
+                img: 'img/moxico.png',
+                points: ['Parque Nacional da Cameia'],
+                stay: ['Alojamentos na cidade do Luena'],
+                food: ['Mel do Moxico'],
+                cult: ['Tradições do leste']
+            },
+            {
+                id: 'bengo',
+                name: 'Bengo',
+                slogan: 'Verde e Proximidade',
+                desc: 'Lagoas serenas e agricultura fértil junto à capital.',
+                details: 'Vizinha da capital, a província do Bengo combina a tranquilidade das lagoas do Panguila e da Ibêndua com praias de areia dourada na sua faixa costeira. É um refúgio ideal para os amantes da natureza, pesca e desportos aquáticos.',
+                img: 'img/bengo.png',
+                points: ['Lagoa do Panguila', 'Praias da costa'],
+                stay: ['Resorts na faixa costeira e pensões em Caxito'],
+                food: ['Peixe da lagoa'],
+                cult: ['Festas populares']
+            },
+            {
+                id: 'cuanza-norte',
+                name: 'Cuanza Norte',
+                slogan: 'Porta do Interior',
+                desc: 'Montanhas verdes e história ferroviária.',
+                details: 'Porta de entrada no interior norte, o Cuanza Norte deslumbra com as montanhas verdejantes e o Centro Botânico de Kilombo, nos arredores de Ndalatando. A província conserva fortes marcas do património ferroviário histórico e da cultura tradicional kwanza.',
+                img: 'img/cuanza-norte.png',
+                points: ['Centro Botânico de Kilombo'],
+                stay: ['Unidades hoteleiras na cidade de Ndalatando'],
+                food: ['Galinha com Cabidela'],
+                cult: ['Tradições Kwanza']
+            },
+            {
+                id: 'cuanza-sul',
+                name: 'Cuanza Sul',
+                slogan: 'Beleza e Diversidade',
+                desc: 'Das praias de Porto Amboim às montanhas da Gabela.',
+                details: 'O Cuanza Sul oferece uma impressionante variedade geográfica, estendendo-se do litoral de Porto Amboim e Sumbe até às brumas montanhosas da Gabela. Os seus vales férteis produzem café de renome, complementados por atrações como a Fenda do Quicombo e as águas termais da região.',
+                img: 'img/cuanza-sul.png',
+                points: ['Águas termais', 'Fenda do Quicombo'],
+                stay: ['Unidades hoteleiras no Sumbe e Porto Amboim'],
+                food: ['Café da Gabela'],
+                cult: ['Festas do Sumbe']
+            }
+        ];
+
+        // GERAR CARDS DO CARROSSEL
+        const track = document.getElementById('carouselTrack');
+        provinces.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'province-card';
+            card.innerHTML = `
+                <img src="${p.img}" alt="Fotografia representativa da província de ${p.name}" loading="lazy">
+                <div class="card-overlay">
+                    <h3>${p.name}</h3>
+                    <p>${p.slogan}</p>
+                </div>
+            `;
+            card.onclick = () => {
+                const target = document.getElementById(`section-${p.id}`);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            };
+            track.appendChild(card);
+        });
+
+        // GERAR SECÇÕES DETALHADAS
+        const container = document.getElementById('provincesContainer');
+        provinces.slice(0, 18).forEach(p => {
+            const section = document.createElement('section');
+            section.className = 'province-detail';
+            section.id = `section-${p.id}`;
+            section.innerHTML = `
+                <div class="province-info">
+                    <div class="province-banner">
+                        <img src="${p.img}" alt="Panorama da província de ${p.name}" loading="lazy">
+                    </div>
+                    <h2>${p.name}</h2>
+                    <p class="province-desc">${p.desc}</p>
+                    <div class="info-grid">
+                        <div class="info-box">
+                            <h4>📍 Pontos Turísticos</h4>
+                            <ul>${p.points.map(i => `<li>${i}</li>`).join('')}</ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>🏨 Onde Ficar</h4>
+                            <ul>${p.stay.map(i => `<li>${i}</li>`).join('')}</ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>🍽 Gastronomia</h4>
+                            <ul>${p.food.map(i => `<li>${i}</li>`).join('')}</ul>
+                        </div>
+                        <div class="info-box">
+                            <h4>🎭 Cultura</h4>
+                            <ul>${p.cult.map(i => `<li>${i}</li>`).join('')}</ul>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline" onclick="openModal('${p.id}')">Ver mais detalhes</button>
+                </div>
+            `;
+            container.appendChild(section);
+        });
+
+        // LÓGICA DO MODAL
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalBody = document.getElementById('modalBody');
+        const closeModal = document.getElementById('closeModal');
+
+        window.openModal = (id) => {
+            const p = provinces.find(item => item.id === id);
+            if (!p) return;
+
+            modalBody.innerHTML = `
+                <h2>${p.name}</h2>
+                <p><strong>${p.slogan}</strong></p>
+                <p>${p.desc}</p>
+                <p>${p.details}</p>
+                <div class="modal-gallery">
+                    <img src="${p.img}" alt="Imagem principal de ${p.name}">
+                    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=400" alt="Paisagem natural e ambiente de ${p.name}">
+                    <img src="https://images.unsplash.com/photo-1523805009345-7448845a9e53?auto=format&fit=crop&q=80&w=400" alt="Cultura e tradição da região de ${p.name}">
+                </div>
+                <div style="margin-top: 30px;">
+                    <a href="mailto:info@turistandoangola.com?subject=Interesse%20em%20${encodeURIComponent(p.name)}" class="btn btn-gold">Solicitar Guia PDF</a>
+                </div>
+            `;
+            modalOverlay.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        };
+
+        closeModal.onclick = () => {
+            modalOverlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        modalOverlay.onclick = (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+        // MENU MOBILE
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.onclick = () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+            menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('active'));
+        };
+
+        // Fechar menu ao clicar num link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.onclick = () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '☰';
+                menuToggle.setAttribute('aria-expanded', 'false');
+            };
+        });
+
+        // LÓGICA DO CARROSSEL DE PROVÍNCIAS
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let scrollAmount = 0;
+
+        function getScrollStep() {
+            const firstCard = track.querySelector('.province-card');
+            if (!firstCard) return 325;
+            const gap = parseFloat(window.getComputedStyle(track).gap) || 25;
+            return firstCard.offsetWidth + gap;
+        }
+
+        nextBtn.onclick = () => {
+            const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+            const step = getScrollStep();
+            scrollAmount = Math.min(scrollAmount + step, maxScroll);
+            track.style.transform = `translateX(-${scrollAmount}px)`;
+        };
+
+        prevBtn.onclick = () => {
+            const step = getScrollStep();
+            scrollAmount = Math.max(scrollAmount - step, 0);
+            track.style.transform = `translateX(-${scrollAmount}px)`;
+        };
+
+        window.addEventListener('resize', () => {
+            const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+            if (scrollAmount > maxScroll) {
+                scrollAmount = maxScroll;
+                track.style.transform = `translateX(-${scrollAmount}px)`;
+            }
+        });
+
+        // SCROLL TO TOP
+        const scrollTop = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        scrollTop.onclick = () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // EFEITO NAVBAR NO SCROLL
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ANIMAÇÃO DE REVELAÇÃO NO SCROLL (INTERSECTION OBSERVER)
+        const revealOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, revealOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // LÓGICA DO NOVO CARROSSEL DE EXPERIÊNCIAS
+        const expTrack = document.getElementById('expSliderTrack');
+        const expNext = document.getElementById('expNext');
+        const expPrev = document.getElementById('expPrev');
+        const expDotsContainer = document.getElementById('expDots');
+        const expSlides = document.querySelectorAll('.exp-slide');
+        let expIndex = 0;
+        let expAutoplay;
+
+        // Criar dots acessíveis
+        expSlides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = `exp-dot ${i === 0 ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `Ir para a experiência ${i + 1}`);
+            dot.onclick = () => {
+                goToSlide(i);
+                resetAutoplay();
+            };
+            expDotsContainer.appendChild(dot);
+        });
+
+        const updateExpSlider = () => {
+            expTrack.style.transform = `translateX(-${expIndex * 100}%)`;
+            document.querySelectorAll('.exp-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === expIndex);
+            });
+        };
+
+        const goToSlide = (i) => {
+            expIndex = i;
+            updateExpSlider();
+        };
+
+        const nextSlide = () => {
+            expIndex = (expIndex + 1) % expSlides.length;
+            updateExpSlider();
+        };
+
+        const prevSlide = () => {
+            expIndex = (expIndex - 1 + expSlides.length) % expSlides.length;
+            updateExpSlider();
+        };
+
+        const resetAutoplay = () => {
+            clearInterval(expAutoplay);
+            startAutoplay();
+        };
+
+        const startAutoplay = () => {
+            expAutoplay = setInterval(nextSlide, 6000);
+        };
+
+        expNext.onclick = () => {
+            nextSlide();
+            resetAutoplay();
+        };
+
+        expPrev.onclick = () => {
+            prevSlide();
+            resetAutoplay();
+        };
+
+        startAutoplay();
+
+        // ENVIO DO FORMULÁRIO DE CONTACTO VIA MAILTO
+        const sendBtn = document.getElementById('sendBtn');
+        if (sendBtn) {
+            sendBtn.addEventListener('click', () => {
+                const form = document.getElementById('contactForm');
+                if (form && !form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                const nameInput = document.getElementById('contactName');
+                const emailInput = document.getElementById('contactEmail');
+                const msgInput = document.getElementById('contactMessage');
+
+                const name = nameInput ? nameInput.value.trim() : '';
+                const email = emailInput ? emailInput.value.trim() : '';
+                const msg = msgInput ? msgInput.value.trim() : '';
+
+                const subject = encodeURIComponent('Pedido de Informação - Turistando Angola');
+                const body = encodeURIComponent(`Nome: ${name}\nEmail: ${email}\n\nMensagem:\n${msg}`);
+                window.location.href = `mailto:info@turistandoangola.com?subject=${subject}&body=${body}`;
+            });
+        }
+    </script>
+</body>
+</html>
